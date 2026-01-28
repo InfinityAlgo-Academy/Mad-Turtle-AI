@@ -20,7 +20,7 @@
     <style>
         /* Store Hero Section */
         .store-hero {
-            padding: 200px 0 100px;
+            padding: 180px 0 80px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -29,151 +29,219 @@
         .store-hero::before {
             content: '';
             position: absolute;
-            top: 0;
+            top: -200px;
             left: 50%;
             transform: translateX(-50%);
-            width: 1000px;
-            height: 1000px;
-            background: radial-gradient(circle, rgba(0, 242, 255, 0.2), transparent 70%);
-            filter: blur(100px);
-            z-index: 0;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 242, 255, 0.15), transparent 70%);
+            filter: blur(80px);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: translateX(-50%) scale(1);
+                opacity: 0.15;
+            }
+
+            50% {
+                transform: translateX(-50%) scale(1.2);
+                opacity: 0.25;
+            }
         }
 
         .store-hero-content {
             position: relative;
             z-index: 1;
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 30px;
         }
 
         .store-hero h1 {
-            font-size: 5rem;
-            margin-bottom: 25px;
+            font-size: 4.5rem;
+            margin-bottom: 20px;
             background: linear-gradient(135deg, #fff 0%, var(--primary-glow) 50%, var(--secondary-glow) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             line-height: 1.1;
+            font-weight: 800;
         }
 
         .store-hero p {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: var(--text-dim);
-            margin-bottom: 50px;
-            line-height: 1.8;
+            margin-bottom: 40px;
+            line-height: 1.7;
         }
 
-        /* Filter & Search Section */
+        /* Filter Controls */
         .store-controls {
-            max-width: 1600px;
-            margin: 0 auto 80px;
-            padding: 0 50px;
+            max-width: 1400px;
+            margin: 0 auto 60px;
+            padding: 0 40px;
+        }
+
+        .controls-wrapper {
+            background: linear-gradient(135deg, rgba(0, 242, 255, 0.05), rgba(112, 0, 255, 0.05));
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
         .controls-grid {
             display: grid;
             grid-template-columns: 1fr auto auto;
-            gap: 20px;
+            gap: 15px;
             align-items: center;
-            background: var(--bg-card);
-            padding: 30px;
-            border-radius: 24px;
-            border: 1px solid var(--border-glass);
-            backdrop-filter: blur(20px);
         }
 
-        .search-box {
+        .search-wrapper {
             position: relative;
-            flex: 1;
         }
 
-        .search-box input {
+        .search-input {
             width: 100%;
-            padding: 18px 60px 18px 25px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-glass);
-            border-radius: 16px;
-            color: var(--text-main);
-            font-size: 1rem;
-            transition: var(--transition-smooth);
+            padding: 14px 50px 14px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 242, 255, 0.3);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
         }
 
-        .search-box input:focus {
+        .search-input:focus {
             outline: none;
             border-color: var(--primary-glow);
+            background: rgba(255, 255, 255, 0.08);
             box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
         }
 
-        .search-box i {
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .search-icon {
             position: absolute;
-            right: 25px;
+            right: 18px;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--text-dim);
-            font-size: 1.2rem;
+            color: var(--primary-glow);
+            font-size: 1.1rem;
+            pointer-events: none;
         }
 
         .filter-select {
-            padding: 18px 24px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-glass);
-            border-radius: 16px;
-            color: var(--text-main);
-            font-size: 1rem;
+            padding: 14px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 242, 255, 0.3);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 0.9rem;
             cursor: pointer;
-            transition: var(--transition-smooth);
-            min-width: 200px;
+            transition: all 0.3s ease;
+            min-width: 180px;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300f2ff' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            padding-right: 40px;
         }
 
         .filter-select:hover {
             border-color: var(--primary-glow);
+            background-color: rgba(255, 255, 255, 0.08);
         }
 
-        .view-toggle {
-            display: flex;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 8px;
-            border-radius: 12px;
+        .filter-select option {
+            background: #0a0f1a;
+            color: #fff;
         }
 
-        .view-btn {
-            padding: 12px 20px;
-            background: transparent;
-            border: none;
+        /* Stats Bar */
+        .store-stats {
+            max-width: 1400px;
+            margin: 0 auto 60px;
+            padding: 0 40px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(0, 242, 255, 0.08), rgba(112, 0, 255, 0.08));
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-glow);
+            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
             color: var(--text-dim);
-            cursor: pointer;
-            border-radius: 8px;
-            transition: var(--transition-smooth);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .view-btn.active {
-            background: var(--primary-glow);
-            color: #000;
-        }
-
-        /* Products Grid */
+        /* Products Section */
         .products-section {
-            max-width: 1600px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 50px 100px;
+            padding: 0 40px 100px;
         }
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            opacity: 1;
+            transition: opacity 0.3s ease;
         }
 
+        .products-grid.filtering {
+            opacity: 0.5;
+        }
+
+        /* Product Card - Smaller & More Attractive */
         .product-card {
-            background: linear-gradient(165deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
-            border: 1px solid var(--border-glass);
-            border-radius: 24px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(0, 242, 255, 0.15);
+            border-radius: 18px;
             overflow: hidden;
-            transition: var(--transition-smooth);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .product-card::before {
@@ -183,184 +251,202 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at top right, rgba(0, 242, 255, 0.1), transparent);
+            background: radial-gradient(circle at top right, rgba(0, 242, 255, 0.15), transparent 60%);
             opacity: 0;
-            transition: var(--transition-smooth);
+            transition: opacity 0.4s ease;
+            pointer-events: none;
         }
 
         .product-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(0, 242, 255, 0.4);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(0, 242, 255, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 242, 255, 0.2);
         }
 
         .product-card:hover::before {
             opacity: 1;
         }
 
-        .product-image {
-            width: 100%;
-            height: 240px;
+        /* Product Header */
+        .product-header {
+            position: relative;
+            height: 140px;
             background: linear-gradient(135deg, rgba(0, 242, 255, 0.1), rgba(112, 0, 255, 0.1));
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
             overflow: hidden;
         }
 
-        .product-image i {
-            font-size: 4rem;
+        .product-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-glow), transparent);
+        }
+
+        .product-icon {
+            font-size: 3rem;
             color: var(--primary-glow);
-            opacity: 0.3;
+            opacity: 0.4;
+            transition: all 0.4s ease;
+        }
+
+        .product-card:hover .product-icon {
+            opacity: 0.8;
+            transform: scale(1.1) rotate(5deg);
         }
 
         .product-badge {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--primary-glow);
-            color: #000;
-            padding: 8px 16px;
+            top: 12px;
+            right: 12px;
+            padding: 6px 14px;
             border-radius: 20px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
         }
 
         .product-badge.free {
-            background: #00ff64;
+            background: linear-gradient(135deg, #00ff64, #00cc50);
+            color: #000;
+            box-shadow: 0 4px 15px rgba(0, 255, 100, 0.3);
         }
 
         .product-badge.premium {
             background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
+            color: #000;
+            box-shadow: 0 4px 15px rgba(0, 242, 255, 0.3);
         }
 
-        .product-content {
-            padding: 30px;
-            position: relative;
-            z-index: 1;
+        /* Product Body */
+        .product-body {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .product-category {
             color: var(--primary-glow);
-            font-size: 0.85rem;
-            font-weight: 600;
+            font-size: 0.75rem;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .product-title {
-            font-size: 1.3rem;
+            font-size: 1.05rem;
             color: #fff;
-            margin-bottom: 15px;
-            line-height: 1.4;
+            margin-bottom: 12px;
+            line-height: 1.3;
+            font-weight: 600;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            min-height: 2.6rem;
         }
 
         .product-description {
             color: var(--text-dim);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 25px;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
             display: -webkit-box;
-            -webkit-line-clamp: 3;
-            line-clamp: 3;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            flex: 1;
         }
 
+        /* Product Footer */
         .product-footer {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-glass);
+            padding-top: 15px;
+            border-top: 1px solid rgba(0, 242, 255, 0.1);
+            margin-top: auto;
         }
 
         .product-platform {
             display: flex;
-            gap: 8px;
-            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
         }
 
         .platform-tag {
-            padding: 6px 12px;
+            padding: 4px 10px;
             background: rgba(0, 242, 255, 0.1);
             border: 1px solid rgba(0, 242, 255, 0.3);
-            border-radius: 8px;
-            font-size: 0.75rem;
+            border-radius: 6px;
+            font-size: 0.7rem;
             color: var(--primary-glow);
             font-weight: 600;
         }
 
         .product-link {
-            padding: 12px 24px;
+            padding: 8px 16px;
             background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
             color: #000;
             text-decoration: none;
-            border-radius: 12px;
+            border-radius: 8px;
             font-weight: 700;
-            font-size: 0.9rem;
-            transition: var(--transition-smooth);
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            white-space: nowrap;
         }
 
         .product-link:hover {
             transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 242, 255, 0.4);
         }
 
-        /* Stats Bar */
-        .store-stats {
-            max-width: 1600px;
-            margin: 0 auto 80px;
-            padding: 0 50px;
+        .product-link i {
+            font-size: 0.7rem;
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-        }
-
-        .stat-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            border-radius: 20px;
-            padding: 35px;
+        /* No Results */
+        .no-results {
             text-align: center;
-            backdrop-filter: blur(20px);
+            padding: 80px 20px;
+            color: var(--text-dim);
         }
 
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .no-results i {
+            font-size: 4rem;
+            color: var(--primary-glow);
+            opacity: 0.3;
+            margin-bottom: 20px;
+        }
+
+        .no-results h3 {
+            font-size: 1.5rem;
+            color: #fff;
             margin-bottom: 10px;
         }
 
-        .stat-label {
-            color: var(--text-dim);
+        .no-results p {
             font-size: 1rem;
-            font-weight: 600;
         }
 
         /* Responsive */
         @media (max-width: 1200px) {
             .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
         }
 
@@ -374,13 +460,20 @@
             }
 
             .products-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 20px;
             }
 
             .products-section,
             .store-controls,
             .store-stats {
-                padding: 0 30px 60px;
+                padding: 0 20px 60px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -410,19 +503,19 @@
 
     <!-- Hero Section -->
     <section class="store-hero">
-        <div class="store-hero-content reveal-v2">
+        <div class="store-hero-content">
             <h1>Premium Trading Store</h1>
-            <p>Discover our complete collection of professional trading tools, expert advisors, indicators, and
-                AI-powered systems. Everything you need to elevate your trading game.</p>
+            <p>Discover our complete arsenal of professional trading tools, expert advisors, and AI-powered systems
+                designed to elevate your trading performance.</p>
         </div>
     </section>
 
     <!-- Stats Section -->
     <section class="store-stats">
-        <div class="stats-grid reveal-v2">
+        <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-number">60+</div>
-                <div class="stat-label">Trading Products</div>
+                <div class="stat-number" id="totalCount">60+</div>
+                <div class="stat-label">Products</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number">15+</div>
@@ -430,7 +523,7 @@
             </div>
             <div class="stat-card">
                 <div class="stat-number">30+</div>
-                <div class="stat-label">Premium Indicators</div>
+                <div class="stat-label">Indicators</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number">10+</div>
@@ -441,26 +534,28 @@
 
     <!-- Controls Section -->
     <section class="store-controls">
-        <div class="controls-grid reveal-v2">
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Search products...">
-                <i class="fas fa-search"></i>
+        <div class="controls-wrapper">
+            <div class="controls-grid">
+                <div class="search-wrapper">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search products...">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                <select class="filter-select" id="categoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="Expert Advisors">Expert Advisors</option>
+                    <option value="Indicators">Indicators</option>
+                    <option value="AI Systems">AI Systems</option>
+                    <option value="Courses">Courses</option>
+                    <option value="free">Free Products</option>
+                </select>
+                <select class="filter-select" id="platformFilter">
+                    <option value="all">All Platforms</option>
+                    <option value="mt4">MetaTrader 4</option>
+                    <option value="mt5">MetaTrader 5</option>
+                    <option value="tradingview">TradingView</option>
+                    <option value="ninjatrader">NinjaTrader</option>
+                </select>
             </div>
-            <select class="filter-select" id="categoryFilter">
-                <option value="all">All Categories</option>
-                <option value="ea">Expert Advisors</option>
-                <option value="indicator">Indicators</option>
-                <option value="ai">AI Systems</option>
-                <option value="course">Courses</option>
-                <option value="free">Free Products</option>
-            </select>
-            <select class="filter-select" id="platformFilter">
-                <option value="all">All Platforms</option>
-                <option value="mt4">MetaTrader 4</option>
-                <option value="mt5">MetaTrader 5</option>
-                <option value="tradingview">TradingView</option>
-                <option value="ninjatrader">NinjaTrader</option>
-            </select>
         </div>
     </section>
 
@@ -503,7 +598,7 @@
                     <ul class="footer-links-list">
                         <li><a href="https://t.me/King_arius_dz">Telegram</a></li>
                         <li><a href="https://www.youtube.com/@InfinityAlgoAcademy">YouTube</a></li>
-                        <li><a href="https://discord.gg/8Q572y45">Discord</a></li>
+                        <li><a href="https://discord.gg/InfinityAlgoAcademy">Discord</a></li>
                     </ul>
                 </div>
             </div>
@@ -516,15 +611,15 @@
 
     <script src="script.js"></script>
     <script>
-        // Products Data
-        const products = [
+        // Products Database
+        const productsDatabase = [
             {
                 title: "Mad Turtle AI - Machine Learning Trading Bot",
                 category: "AI Systems",
                 platform: "MT5",
                 type: "premium",
                 url: "https://infinityalgoacademy.net/item/ai-machine-learning-trading-bot-mad-turtle/",
-                description: "Advanced neural network-powered trading bot for XAUUSD markets with 95% model accuracy.",
+                description: "Advanced neural network-powered trading bot for XAUUSD with 95% accuracy.",
                 icon: "fa-brain"
             },
             {
@@ -533,7 +628,7 @@
                 platform: "MT5",
                 type: "premium",
                 url: "https://infinityalgoacademy.net/item/nexus-ea-forex-mt5/",
-                description: "Professional forex trading expert advisor with advanced risk management.",
+                description: "Professional forex EA with advanced risk management.",
                 icon: "fa-robot"
             },
             {
@@ -542,16 +637,16 @@
                 platform: "MT4",
                 type: "premium",
                 url: "https://infinityalgoacademy.net/item/pivot-killer-ea/",
-                description: "Powerful pivot-based trading system for consistent profits.",
+                description: "Powerful pivot-based trading system.",
                 icon: "fa-chart-line"
             },
             {
-                title: "Flip Bot EA - Ultimate Automated Trading Bot",
+                title: "Flip Bot EA",
                 category: "Expert Advisors",
                 platform: "MT5",
                 type: "premium",
                 url: "https://infinityalgoacademy.net/item/flip-bot-ea-the-ultimate-automated-trading-bot-for-metatrader-5/",
-                description: "Ultimate automated trading solution with intelligent market analysis.",
+                description: "Ultimate automated trading solution.",
                 icon: "fa-robot"
             },
             {
@@ -560,7 +655,7 @@
                 platform: "TradingView",
                 type: "premium",
                 url: "https://infinityalgoacademy.net/item/80-pro-tradingview-indicators-bundle-trade-smarter-with-one-powerful-system/",
-                description: "Complete bundle of 80+ professional indicators for TradingView.",
+                description: "Complete bundle of 80+ professional indicators.",
                 icon: "fa-layer-group"
             },
             {
@@ -569,16 +664,16 @@
                 platform: "MT4",
                 type: "premium",
                 url: "https://infinityalgoacademy.net/item/indicator-trend-lines-pro-mt4/",
-                description: "Advanced trend line detection and analysis indicator.",
+                description: "Advanced trend line detection indicator.",
                 icon: "fa-chart-area"
             },
             {
-                title: "Alpha Hunter System MTF Risk Manager",
+                title: "Alpha Hunter System MTF",
                 category: "Indicators",
                 platform: "MT4",
                 type: "premium",
                 url: "https://infinityalgoacademy.net/item/alpha-hunter-system-mtf-risk-manager-full-explanation/",
-                description: "Multi-timeframe risk management system with full explanation.",
+                description: "Multi-timeframe risk management system.",
                 icon: "fa-shield-alt"
             },
             {
@@ -587,52 +682,43 @@
                 platform: "All",
                 type: "premium",
                 url: "https://infinityalgoacademy.net/item/all-in-one-course/",
-                description: "Comprehensive trading education covering all aspects of the market.",
+                description: "Comprehensive trading education program.",
                 icon: "fa-graduation-cap"
             },
             {
-                title: "Footprint Price Action Pro - NinjaTrader",
+                title: "Footprint Price Action Pro",
                 category: "Indicators",
                 platform: "NinjaTrader",
                 type: "premium",
                 url: "https://infinityalgoacademy.net/item/footprint-price-action-pro-indicator-in-ninjatrader/",
-                description: "Professional footprint analysis for NinjaTrader platform.",
+                description: "Professional footprint analysis.",
                 icon: "fa-shoe-prints"
             },
             {
-                title: "Volume MAs Oscillator LYRO RS",
+                title: "Volume MAs Oscillator",
                 category: "Indicators",
                 platform: "MT5",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/volume-mas-oscillator-lyro-rs/",
-                description: "Volume-based moving average oscillator for market analysis.",
+                description: "Volume-based moving average oscillator.",
                 icon: "fa-wave-square"
             },
             {
-                title: "Swing Failure Pattern LuxAlgo V2 (EX4)",
+                title: "Swing Failure Pattern LuxAlgo V2",
                 category: "Indicators",
                 platform: "MT4",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/swing-failure-pattern-luxalgo-v2-ex4/",
-                description: "Detect swing failure patterns with LuxAlgo technology.",
+                description: "Detect swing failure patterns.",
                 icon: "fa-chart-bar"
             },
             {
-                title: "Swing Failure Pattern LuxAlgo V2 (Source Code)",
-                category: "Indicators",
-                platform: "MT4",
-                type: "premium",
-                url: "https://infinityalgoacademy.net/item/swing-failure-pattern-luxalgo-v2-mql-code-source/",
-                description: "Full MQL source code for swing failure pattern indicator.",
-                icon: "fa-code"
-            },
-            {
-                title: "ATR Momentum Color MQL5",
+                title: "ATR Momentum Color",
                 category: "Indicators",
                 platform: "MT5",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/atr-momentum-color-mql5/",
-                description: "Color-coded ATR momentum indicator for MT5.",
+                description: "Color-coded ATR momentum indicator.",
                 icon: "fa-tachometer-alt"
             },
             {
@@ -641,7 +727,7 @@
                 platform: "MT4",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/lucky-reversal-indicator/",
-                description: "Identify high-probability reversal points in the market.",
+                description: "Identify high-probability reversals.",
                 icon: "fa-exchange-alt"
             },
             {
@@ -650,16 +736,16 @@
                 platform: "MT4",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/buy-sell-magic-indicator/",
-                description: "Simple yet powerful buy/sell signal indicator.",
+                description: "Simple yet powerful buy/sell signals.",
                 icon: "fa-magic"
             },
             {
-                title: "Taurus Binary RET Indicator",
+                title: "Taurus Binary RET",
                 category: "Indicators",
                 platform: "MT4",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/taurus-binary-ret-indicator/",
-                description: "Binary options trading indicator with high accuracy.",
+                description: "Binary options trading indicator.",
                 icon: "fa-bullseye"
             },
             {
@@ -668,7 +754,7 @@
                 platform: "MT4",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/orion-gold-scalper-ea-v4-0-mt4/",
-                description: "Specialized gold scalping expert advisor.",
+                description: "Specialized gold scalping EA.",
                 icon: "fa-coins"
             },
             {
@@ -677,7 +763,7 @@
                 platform: "MT4",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/ai-gen-xii-ea-v2-5-mt4/",
-                description: "AI-powered trading system with generation XII technology.",
+                description: "AI-powered trading system.",
                 icon: "fa-microchip"
             },
             {
@@ -686,16 +772,16 @@
                 platform: "MT4",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/free-goldfinch-ea-for-metatrader/",
-                description: "Free expert advisor for automated gold trading.",
+                description: "Free automated gold trading EA.",
                 icon: "fa-dove"
             },
             {
-                title: "Easy Trade Panel Expert MT5",
+                title: "Easy Trade Panel MT5",
                 category: "Expert Advisors",
                 platform: "MT5",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/easy-trade-panel-expert-for-metatrader-5-download-free/",
-                description: "User-friendly trade management panel for MT5.",
+                description: "User-friendly trade management panel.",
                 icon: "fa-th"
             },
             {
@@ -704,7 +790,7 @@
                 platform: "MT4",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/corex-g-ea-v1-6-mt4-robot/",
-                description: "Advanced grid trading expert advisor.",
+                description: "Advanced grid trading EA.",
                 icon: "fa-th-large"
             },
             {
@@ -713,7 +799,7 @@
                 platform: "MT4",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/gold-trading-ai-ea-mt4-robot-for-free/",
-                description: "AI-powered gold trading robot for MT4.",
+                description: "AI-powered gold trading robot.",
                 icon: "fa-gem"
             },
             {
@@ -722,26 +808,17 @@
                 platform: "MT4",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/free-download-dynamic-pips-ea-v2-2-mt4/",
-                description: "Dynamic pip collection system with adaptive algorithms.",
+                description: "Dynamic pip collection system.",
                 icon: "fa-chart-pie"
             },
             {
-                title: "Deep Scalper EA V5 Master",
+                title: "Deep Scalper EA V5",
                 category: "Expert Advisors",
                 platform: "MT4",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/free-download-deep-scalper-ea-v5-master-mt4/",
-                description: "Professional scalping EA with deep market analysis.",
+                description: "Professional scalping EA.",
                 icon: "fa-layer-group"
-            },
-            {
-                title: "Corex G EA V1.7",
-                category: "Expert Advisors",
-                platform: "MT4",
-                type: "free",
-                url: "https://infinityalgoacademy.net/item/corex-g-ea-v1-7-mt4/",
-                description: "Updated version of Corex grid trading system.",
-                icon: "fa-grip-horizontal"
             },
             {
                 title: "Trading Session Time Indicator",
@@ -749,16 +826,16 @@
                 platform: "MT4/MT5",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/trading-session-time-indicator-for-mt4-mt5/",
-                description: "Display trading sessions on your charts.",
+                description: "Display trading sessions on charts.",
                 icon: "fa-clock"
             },
             {
-                title: "Forex Liquidity & Market Sentiment Indicator",
+                title: "Forex Liquidity & Sentiment",
                 category: "Indicators",
                 platform: "MT4/MT5",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/forex-liquidity-and-market-sentiment-indicator-mt4-mt5-free-download/",
-                description: "Analyze market liquidity and sentiment in real-time.",
+                description: "Analyze market liquidity and sentiment.",
                 icon: "fa-water"
             },
             {
@@ -767,7 +844,7 @@
                 platform: "MT4",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/fx-trade-detector-ea-mt4-for-free-download/",
-                description: "Detect and execute high-probability forex trades.",
+                description: "Detect high-probability forex trades.",
                 icon: "fa-search-dollar"
             },
             {
@@ -776,16 +853,16 @@
                 platform: "MT4",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/advanced-hedge-ea-v4-0-mt4/",
-                description: "Sophisticated hedging system for risk management.",
+                description: "Sophisticated hedging system.",
                 icon: "fa-balance-scale"
             },
             {
-                title: "Advanced Gold Trading V6.4 EA",
+                title: "Advanced Gold Trading V6.4",
                 category: "Expert Advisors",
                 platform: "MT4",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/advanced-gold-trading-v6-4-ea-mt4/",
-                description: "Advanced gold trading system with proven strategies.",
+                description: "Advanced gold trading system.",
                 icon: "fa-medal"
             },
             {
@@ -794,7 +871,7 @@
                 platform: "MT4",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/big-forex-players-ea-mt4-free-download/",
-                description: "Follow institutional forex players' movements.",
+                description: "Follow institutional movements.",
                 icon: "fa-users"
             },
             {
@@ -803,83 +880,56 @@
                 platform: "MT4",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/the-gold-reaper-ea-v1-5-mt4-free-download/",
-                description: "Aggressive gold trading system for maximum profits.",
+                description: "Aggressive gold trading system.",
                 icon: "fa-skull-crossbones"
             },
             {
-                title: "AI Supertrend Clustering Oscillator",
+                title: "AI Supertrend Clustering",
                 category: "AI Systems",
                 platform: "MT5",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/ai-supertrend-clustering-oscillator-for-mt5-download-free/",
-                description: "AI-powered supertrend analysis with clustering.",
+                description: "AI-powered supertrend analysis.",
                 icon: "fa-project-diagram"
             },
             {
-                title: "ACD Indicator MT5",
-                category: "Indicators",
-                platform: "MT5",
-                type: "free",
-                url: "https://infinityalgoacademy.net/item/acd-indicator-for-metatrader-5-download-free/",
-                description: "Advanced chart drawing indicator for MT5.",
-                icon: "fa-draw-polygon"
-            },
-            {
-                title: "BPR SFP Indicator (ICT)",
-                category: "Indicators",
-                platform: "MT5",
-                type: "free",
-                url: "https://infinityalgoacademy.net/item/bpr-sfp-indicator-ict-in-metatrader-5-free/",
-                description: "ICT-based swing failure pattern indicator.",
-                icon: "fa-chart-line"
-            },
-            {
-                title: "Perfect Trendline Indicator MT5",
+                title: "Perfect Trendline Indicator",
                 category: "Indicators",
                 platform: "MT5",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/perfect-trendline-indicator-for-mt5/",
-                description: "Automatically draw perfect trendlines on charts.",
+                description: "Automatically draw perfect trendlines.",
                 icon: "fa-slash"
             },
             {
-                title: "FVG Instantaneous Mitigation Signals",
+                title: "FVG Mitigation Signals",
                 category: "Indicators",
                 platform: "MT5",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/fvg-instantaneous-mitigation-signals-indicator-mt5/",
-                description: "Fair value gap mitigation signal indicator.",
+                description: "Fair value gap mitigation signals.",
                 icon: "fa-signal"
             },
             {
-                title: "CCI Histogram Indicator MT5",
+                title: "CCI Histogram MT5",
                 category: "Indicators",
                 platform: "MT5",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/cci-histogram-indicator-for-metatrader-5-download/",
-                description: "CCI indicator displayed as histogram.",
+                description: "CCI displayed as histogram.",
                 icon: "fa-chart-bar"
             },
             {
-                title: "Channel Zig Zag Indicator MT5",
-                category: "Indicators",
-                platform: "MT5",
-                type: "free",
-                url: "https://infinityalgoacademy.net/item/channel-zig-zag-indicator-for-mt5-download-free/",
-                description: "Channel-based zig zag pattern indicator.",
-                icon: "fa-wave-square"
-            },
-            {
-                title: "Risk Reward Ratio Calculator MT5",
+                title: "Risk Reward Calculator",
                 category: "Indicators",
                 platform: "MT5",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/risk-reward-ratio-calculator-indicator-for-mt5-free/",
-                description: "Calculate risk/reward ratio automatically.",
+                description: "Calculate risk/reward automatically.",
                 icon: "fa-calculator"
             },
             {
-                title: "ICT Entry V1 - TradingView",
+                title: "ICT Entry V1",
                 category: "Indicators",
                 platform: "TradingView",
                 type: "free",
@@ -888,12 +938,12 @@
                 icon: "fa-sign-in-alt"
             },
             {
-                title: "Deeptest TradingView Indicator",
+                title: "Deeptest TradingView",
                 category: "Indicators",
                 platform: "TradingView",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/deeptest-tradinview-indicator-free-download/",
-                description: "Deep market testing indicator for TradingView.",
+                description: "Deep market testing indicator.",
                 icon: "fa-vial"
             },
             {
@@ -902,25 +952,25 @@
                 platform: "MT4",
                 type: "premium",
                 url: "https://infinityalgoacademy.net/item/alien-mattrix-ea-mt4/",
-                description: "Advanced matrix-based trading system.",
+                description: "Advanced matrix-based trading.",
                 icon: "fa-alien"
             },
             {
-                title: "LuxAlgo Price Action Concepts (Lifetime)",
+                title: "LuxAlgo Price Action Concepts",
                 category: "Indicators",
                 platform: "TradingView",
                 type: "premium",
                 url: "https://infinityalgoacademy.net/item/luxalgo-price-action-concepts-lifetime/",
-                description: "Lifetime access to LuxAlgo price action suite.",
+                description: "Lifetime LuxAlgo price action suite.",
                 icon: "fa-infinity"
             },
             {
-                title: "Gains Algo Alpha V2 - TradingView",
+                title: "Gains Algo Alpha V2",
                 category: "AI Systems",
                 platform: "TradingView",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/gains-algo-alpha-v2-download-free-tradingview-pinescript/",
-                description: "Alpha version of Gains algorithmic system.",
+                description: "Alpha algorithmic system.",
                 icon: "fa-rocket"
             },
             {
@@ -929,7 +979,7 @@
                 platform: "TradingView",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/arbitrage-detector-luxalgo-download-free/",
-                description: "Detect arbitrage opportunities across markets.",
+                description: "Detect arbitrage opportunities.",
                 icon: "fa-exchange-alt"
             },
             {
@@ -938,7 +988,7 @@
                 platform: "TradingView",
                 type: "premium",
                 url: "https://infinityalgoacademy.net/item/million-moves-algo-v4-3/",
-                description: "Million moves algorithmic trading system.",
+                description: "Million moves algorithmic system.",
                 icon: "fa-chess"
             },
             {
@@ -947,34 +997,34 @@
                 platform: "TradingView",
                 type: "premium",
                 url: "https://infinityalgoacademy.net/item/infinity_algo_-_remake/",
-                description: "Remade version of the legendary Infinity Algo.",
+                description: "Remade legendary Infinity Algo.",
                 icon: "fa-redo"
             },
             {
-                title: "Hyper Spectral Neural Flow - TradingView",
+                title: "Hyper Spectral Neural Flow",
                 category: "AI Systems",
                 platform: "TradingView",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/hyper-spectral-neural-flow-foe-tradingview-pinescript-free-download/",
-                description: "Neural flow analysis with spectral technology.",
+                description: "Neural flow with spectral tech.",
                 icon: "fa-brain"
             },
             {
-                title: "Volume Weighted Price Z-Score - QuantAlgo",
+                title: "Volume Weighted Price Z-Score",
                 category: "Indicators",
                 platform: "TradingView",
                 type: "premium",
                 url: "https://infinityalgoacademy.net/item/volume-weighted-price-z-score-quantalgo/",
-                description: "Advanced volume-weighted price analysis.",
+                description: "Advanced volume-weighted analysis.",
                 icon: "fa-weight"
             },
             {
-                title: "Delta Reaction Zones - BosWaves",
+                title: "Delta Reaction Zones",
                 category: "Indicators",
                 platform: "TradingView",
                 type: "premium",
                 url: "https://infinityalgoacademy.net/item/delta-reaction-zones-boswaves/",
-                description: "Identify delta reaction zones in the market.",
+                description: "Identify delta reaction zones.",
                 icon: "fa-wave-square"
             },
             {
@@ -983,17 +1033,8 @@
                 platform: "MT4",
                 type: "premium",
                 url: "https://infinityalgoacademy.net/item/algo-samurai-ea-full/",
-                description: "Complete Samurai algorithmic trading system.",
+                description: "Complete Samurai algo system.",
                 icon: "fa-user-ninja"
-            },
-            {
-                title: "Zone to Zone Indicator (Source Code)",
-                category: "Indicators",
-                platform: "MT4",
-                type: "premium",
-                url: "https://infinityalgoacademy.net/item/zone-to-zone-indicator-for-metatrader4-source-code/",
-                description: "Full source code for zone-to-zone trading.",
-                icon: "fa-code"
             },
             {
                 title: "FXSSI OrderBook Pro",
@@ -1001,26 +1042,8 @@
                 platform: "MT4/MT5",
                 type: "premium",
                 url: "https://infinityalgoacademy.net/item/fxssi-orderbook-pro/",
-                description: "Professional order book analysis tool.",
+                description: "Professional order book analysis.",
                 icon: "fa-book"
-            },
-            {
-                title: "Combined Advanced Trading Blueprint - TradingView",
-                category: "Indicators",
-                platform: "TradingView",
-                type: "premium",
-                url: "https://infinityalgoacademy.net/item/indicator-combined-advanced-trading-blueprint-for-tradingview/",
-                description: "Complete trading blueprint system.",
-                icon: "fa-drafting-compass"
-            },
-            {
-                title: "Expert Trade Assistant MT4 V10.23",
-                category: "Expert Advisors",
-                platform: "MT4",
-                type: "premium",
-                url: "https://infinityalgoacademy.net/item/expert-trade-assistant-mt4-v10-23/",
-                description: "Professional trade management assistant.",
-                icon: "fa-hands-helping"
             },
             {
                 title: "Quantum Queen MT5 V2.6",
@@ -1028,7 +1051,7 @@
                 platform: "MT5",
                 type: "premium",
                 url: "https://infinityalgoacademy.net/item/expert-quantum-queen-mt5-v2-6-dll-5430/",
-                description: "Quantum-based trading system for MT5.",
+                description: "Quantum-based trading system.",
                 icon: "fa-crown"
             },
             {
@@ -1037,7 +1060,7 @@
                 platform: "MT4",
                 type: "premium",
                 url: "https://infinityalgoacademy.net/item/fish-n-grid/",
-                description: "Grid trading system with fishing strategy.",
+                description: "Grid trading with fishing strategy.",
                 icon: "fa-fish"
             },
             {
@@ -1046,52 +1069,43 @@
                 platform: "MT4",
                 type: "premium",
                 url: "https://infinityalgoacademy.net/item/expert-goldbot-one-mt4-v1-6-set/",
-                description: "Specialized gold trading bot for MT4.",
+                description: "Specialized gold trading bot.",
                 icon: "fa-trophy"
             },
             {
-                title: "HSN Algo V9.5 - TradingView",
+                title: "HSN Algo V9.5",
                 category: "AI Systems",
                 platform: "TradingView",
                 type: "premium",
                 url: "https://infinityalgoacademy.net/item/buy-sell-mr-mt4-hsn-algo-v9-5-tradingview/",
-                description: "HSN algorithmic system version 9.5.",
+                description: "HSN algorithmic system v9.5.",
                 icon: "fa-microchip"
             },
             {
-                title: "SMT Double Div TradingFinder - NinjaTrader",
+                title: "SMT Double Div TradingFinder",
                 category: "Indicators",
                 platform: "NinjaTrader",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/smt-double-div-tradingfinder-indicator-in-ninjatrader-free/",
-                description: "Smart money divergence detector for NinjaTrader.",
+                description: "Smart money divergence detector.",
                 icon: "fa-divide"
             },
             {
-                title: "AI Gen XII EA V2.5 (MQ4 Source)",
-                category: "AI Systems",
-                platform: "MT4",
-                type: "premium",
-                url: "https://infinityalgoacademy.net/item/ai-gen-xii-ea-v2-5-mt4-mq4/",
-                description: "Full MQ4 source code for AI Gen XII.",
-                icon: "fa-file-code"
-            },
-            {
-                title: "Fast Scalping AI - NinjaTrader 8",
+                title: "Fast Scalping AI NT8",
                 category: "AI Systems",
                 platform: "NinjaTrader",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/fast-scalping-ai-ninjatrader-8-indicator-free/",
-                description: "AI-powered fast scalping for NinjaTrader.",
+                description: "AI-powered fast scalping.",
                 icon: "fa-bolt"
             },
             {
-                title: "Footprint OrderFlow - NinjaTrader",
+                title: "Footprint OrderFlow NT",
                 category: "Indicators",
                 platform: "NinjaTrader",
                 type: "premium",
                 url: "https://infinityalgoacademy.net/item/footprint-orderflow-indicator-in-ninjatrader/",
-                description: "Advanced order flow analysis for NinjaTrader.",
+                description: "Advanced order flow analysis.",
                 icon: "fa-stream"
             },
             {
@@ -1100,105 +1114,126 @@
                 platform: "TradingView",
                 type: "premium",
                 url: "https://infinityalgoacademy.net/item/infinityrsi-divergence-v-6-2/",
-                description: "Advanced RSI divergence detection system.",
+                description: "Advanced RSI divergence detection.",
                 icon: "fa-chart-area"
             },
             {
-                title: "RSI Monitor (High/Low) MTF & Time Filter",
+                title: "RSI Monitor MTF",
                 category: "Indicators",
                 platform: "TradingView",
                 type: "free",
                 url: "https://infinityalgoacademy.net/item/rsi-monitor-high-low-mtf-time-filter/",
-                description: "Multi-timeframe RSI monitoring system.",
+                description: "Multi-timeframe RSI monitoring.",
                 icon: "fa-desktop"
             }
         ];
 
-        // Render Products
-        function renderProducts(filteredProducts) {
+        // Filter & Render Logic
+        let currentFilters = {
+            search: '',
+            category: 'all',
+            platform: 'all'
+        };
+
+        function filterProducts() {
             const grid = document.getElementById('productsGrid');
-            grid.innerHTML = '';
+            grid.classList.add('filtering');
 
-            filteredProducts.forEach((product, index) => {
-                const card = document.createElement('div');
-                card.className = 'product-card reveal-v2';
-                card.style.transitionDelay = `${(index % 12) * 0.05}s`;
+            setTimeout(() => {
+                const filtered = productsDatabase.filter(product => {
+                    // Search filter
+                    const searchMatch = currentFilters.search === '' ||
+                        product.title.toLowerCase().includes(currentFilters.search.toLowerCase()) ||
+                        product.description.toLowerCase().includes(currentFilters.search.toLowerCase());
 
-                const platformTag = product.platform.includes('/')
-                    ? product.platform.split('/').map(p => `<span class="platform-tag">${p}</span>`).join('')
+                    // Category filter
+                    let categoryMatch = currentFilters.category === 'all';
+                    if (!categoryMatch) {
+                        if (currentFilters.category === 'free') {
+                            categoryMatch = product.type === 'free';
+                        } else {
+                            categoryMatch = product.category === currentFilters.category;
+                        }
+                    }
+
+                    // Platform filter
+                    const platformMatch = currentFilters.platform === 'all' ||
+                        product.platform.toLowerCase().includes(currentFilters.platform.toLowerCase());
+
+                    return searchMatch && categoryMatch && platformMatch;
+                });
+
+                renderProducts(filtered);
+                updateStats(filtered.length);
+                grid.classList.remove('filtering');
+            }, 150);
+        }
+
+        function renderProducts(products) {
+            const grid = document.getElementById('productsGrid');
+
+            if (products.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-results" style="grid-column: 1 / -1;">
+                        <i class="fas fa-search"></i>
+                        <h3>No Products Found</h3>
+                        <p>Try adjusting your filters or search terms</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = products.map(product => {
+                const platformTags = product.platform.includes('/')
+                    ? product.platform.split('/').map(p => `<span class="platform-tag">${p.trim()}</span>`).join('')
                     : `<span class="platform-tag">${product.platform}</span>`;
 
-                card.innerHTML = `
-                    <div class="product-image">
-                        <i class="fas ${product.icon}"></i>
-                        <span class="product-badge ${product.type}">${product.type === 'free' ? 'FREE' : 'PREMIUM'}</span>
-                    </div>
-                    <div class="product-content">
-                        <div class="product-category">${product.category}</div>
-                        <h3 class="product-title">${product.title}</h3>
-                        <p class="product-description">${product.description}</p>
-                        <div class="product-footer">
-                            <div class="product-platform">
-                                ${platformTag}
+                return `
+                    <div class="product-card">
+                        <div class="product-header">
+                            <i class="fas ${product.icon} product-icon"></i>
+                            <span class="product-badge ${product.type}">${product.type === 'free' ? 'FREE' : 'PREMIUM'}</span>
+                        </div>
+                        <div class="product-body">
+                            <div class="product-category">${product.category}</div>
+                            <h3 class="product-title">${product.title}</h3>
+                            <p class="product-description">${product.description}</p>
+                            <div class="product-footer">
+                                <div class="product-platform">
+                                    ${platformTags}
+                                </div>
+                                <a href="${product.url}" target="_blank" class="product-link">
+                                    View <i class="fas fa-arrow-right"></i>
+                                </a>
                             </div>
-                            <a href="${product.url}" target="_blank" class="product-link">
-                                View <i class="fas fa-arrow-right"></i>
-                            </a>
                         </div>
                     </div>
                 `;
-
-                grid.appendChild(card);
-            });
-
-            // Re-trigger reveal animations
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.reveal-v2').forEach(el => observer.observe(el));
+            }).join('');
         }
 
-        // Filter & Search
-        const searchInput = document.getElementById('searchInput');
-        const categoryFilter = document.getElementById('categoryFilter');
-        const platformFilter = document.getElementById('platformFilter');
-
-        function filterProducts() {
-            const searchTerm = searchInput.value.toLowerCase();
-            const category = categoryFilter.value;
-            const platform = platformFilter.value;
-
-            const filtered = products.filter(product => {
-                const matchesSearch = product.title.toLowerCase().includes(searchTerm) ||
-                    product.description.toLowerCase().includes(searchTerm);
-
-                const matchesCategory = category === 'all' ||
-                    (category === 'ea' && product.category === 'Expert Advisors') ||
-                    (category === 'indicator' && product.category === 'Indicators') ||
-                    (category === 'ai' && product.category === 'AI Systems') ||
-                    (category === 'course' && product.category === 'Courses') ||
-                    (category === 'free' && product.type === 'free');
-
-                const matchesPlatform = platform === 'all' ||
-                    product.platform.toLowerCase().includes(platform.toLowerCase());
-
-                return matchesSearch && matchesCategory && matchesPlatform;
-            });
-
-            renderProducts(filtered);
+        function updateStats(count) {
+            document.getElementById('totalCount').textContent = count + '+';
         }
 
-        searchInput.addEventListener('input', filterProducts);
-        categoryFilter.addEventListener('change', filterProducts);
-        platformFilter.addEventListener('change', filterProducts);
+        // Event Listeners
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            currentFilters.search = e.target.value;
+            filterProducts();
+        });
+
+        document.getElementById('categoryFilter').addEventListener('change', (e) => {
+            currentFilters.category = e.target.value;
+            filterProducts();
+        });
+
+        document.getElementById('platformFilter').addEventListener('change', (e) => {
+            currentFilters.platform = e.target.value;
+            filterProducts();
+        });
 
         // Initial render
-        renderProducts(products);
+        renderProducts(productsDatabase);
     </script>
 </body>
 
