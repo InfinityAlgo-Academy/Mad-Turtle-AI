@@ -451,12 +451,25 @@
         }
 
         @media (max-width: 768px) {
+            .store-hero {
+                padding: 140px 0 60px;
+            }
+
             .store-hero h1 {
-                font-size: 3rem;
+                font-size: 2.5rem;
+            }
+
+            .store-hero p {
+                font-size: 1rem;
             }
 
             .controls-grid {
                 grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .filter-select {
+                min-width: 100%;
             }
 
             .products-grid {
@@ -464,16 +477,76 @@
                 gap: 20px;
             }
 
-            .products-section,
-            .store-controls,
-            .store-stats {
+            .products-section {
                 padding: 0 20px 60px;
+            }
+
+            .store-controls {
+                padding: 0 20px;
+                margin-bottom: 40px;
+            }
+
+            .store-stats {
+                padding: 0 20px;
+                margin-bottom: 40px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
             }
         }
 
         @media (max-width: 480px) {
+            .store-hero {
+                padding: 120px 0 50px;
+            }
+
+            .store-hero h1 {
+                font-size: 2rem;
+            }
+
+            .store-hero p {
+                font-size: 0.9rem;
+            }
+
             .products-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .product-header {
+                height: 120px;
+            }
+
+            .product-icon {
+                font-size: 2.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .controls-wrapper {
+                padding: 20px;
+            }
+
+            .filter-select {
+                padding: 12px 15px;
+                padding-right: 35px;
+                font-size: 0.85rem;
+            }
+
+            .search-input {
+                padding: 12px 45px 12px 15px;
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -488,7 +561,12 @@
     <header id="site-header">
         <div class="nav-container">
             <a href="index.html" class="logo">MAD<span class="accent-gradient">TURTLE</span></a>
-            <nav class="nav-links">
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="nav-links" id="navLinks">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="about.html" class="nav-link">About</a>
                 <a href="products.html" class="nav-link">Products</a>
