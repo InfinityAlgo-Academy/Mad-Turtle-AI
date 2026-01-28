@@ -24,6 +24,13 @@
     </url>
     
     <url>
+        <loc>https://infinityalgo-academy.github.io/Mad-Turtle-AI/store.html</loc>
+        <lastmod>2026-01-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.95</priority>
+    </url>
+    
+    <url>
         <loc>https://infinityalgo-academy.github.io/Mad-Turtle-AI/products.html</loc>
         <lastmod>2026-01-28</lastmod>
         <changefreq>weekly</changefreq>
