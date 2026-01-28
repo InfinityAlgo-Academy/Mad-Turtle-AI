@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Intelligence Support | Mad Turtle AI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .contact-form-v2 {
+            background: var(--bg-card);
+            padding: 60px;
+            border-radius: 40px;
+            border: 1px solid var(--border-glass);
+            backdrop-filter: blur(20px);
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-dim);
+        }
+
+        .form-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-glass);
+            padding: 18px 24px;
+            border-radius: 16px;
+            color: #fff;
+            font-family: var(--font-jakarta);
+            transition: var(--transition-smooth);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-glow);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
+        }
+
+        .form-select {
+            appearance: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="canvas-bg"></div>
+    <div class="glow-orb orb-primary"></div>
+    <div class="glow-orb orb-secondary"></div>
+
+    <header id="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">MAD<span class="accent-gradient">TURTLE</span></a>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="products.html" class="nav-link">Products</a>
+                <a href="docs.html" class="nav-link">Docs</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="https://infinityalgoacademy.net/item/ai-machine-learning-trading-bot-mad-turtle/"
+                    class="btn-v2 btn-premium">Get Access</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-v2 container-v2" style="padding-top: 200px; padding-bottom: 150px;">
+        <div class="hero-grid">
+            <div class="hero-content reveal-v2">
+                <div class="hero-tag">
+                    <i class="fas fa-headset"></i>
+                    <span>Technical Support Terminal</span>
+                </div>
+                <h1 class="hero-title text-gradient" style="font-size: 4rem;">Human & AI <br>Support.</h1>
+                <p class="hero-desc">Need assistance with your MT5 environment or ONNX model calibration? Our quant team
+                    is here to help.</p>
+
+                <div style="display: grid; gap: 30px; margin-top: 50px;">
+                    <div style="display: flex; gap: 20px; align-items: center;">
+                        <div class="icon-box" style="margin-bottom: 0; width: 60px; height: 60px; font-size: 1.4rem;"><i
+                                class="fab fa-telegram-plane"></i></div>
+                        <div>
+                            <h4 style="font-size: 1.1rem;">Official Telegram</h4>
+                            <p style="color: var(--text-dim); font-size: 0.9rem;">@King_arius_dz</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 20px; align-items: center;">
+                        <div class="icon-box" style="margin-bottom: 0; width: 60px; height: 60px; font-size: 1.4rem;"><i
+                                class="fas fa-envelope-open-text"></i></div>
+                        <div>
+                            <h4 style="font-size: 1.1rem;">Alpha Support Email</h4>
+                            <p style="color: var(--text-dim); font-size: 0.9rem;">support@infinityalgoacademy.net</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-v2 reveal-v2" style="transition-delay: 0.2s;">
+                <form action="#">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-input" placeholder="e.g. Alex Henderson">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Terminal ID (MT5)</label>
+                        <input type="text" class="form-input" placeholder="Enter your registered MT5 number">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Support Category</label>
+                        <select class="form-input form-select">
+                            <option>Model Initialization Error</option>
+                            <option>VPS / Latency Issues</option>
+                            <option>License Activation</option>
+                            <option>Custom Feature Request</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Message Intelligence</label>
+                        <textarea class="form-input" rows="4"
+                            placeholder="Describe your technical challenge..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-v2 btn-premium"
+                        style="width: 100%; justify-content: center;">Initialize Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer-v2>
+        <div class="container-v2">
+            <div class="footer-grid-v2">
+                <div>
+                    <a href="index.html" class="logo">MAD<span class="accent-gradient">TURTLE</span></a>
+                    <p class="footer-desc">Redefining algorithmic trading through machine learning and mathematical
+                        transparency.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Navigation</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="docs.html">Docs</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Legal</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="terms.html">Disclosure</a></li>
+                        <li><a href="terms.html">Privacy</a></li>
+                        <li><a href="terms.html">Risk Terms</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Social</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="https://t.me/King_arius_dz">Telegram</a></li>
+                        <li><a href="https://www.youtube.com/@InfinityAlgoAcademy">YouTube</a></li>
+                        <li><a href="https://discord.gg/InfinityAlgoAcademy">Discord</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                style="text-align: center; color: var(--text-dim); font-size: 0.85rem; border-top: 1px solid var(--border-glass); padding-top: 30px;">
+                &copy; 2026 Mad Turtle AI Intelligence Group. Highly speculative trading involves risk.
+            </div>
+        </div>
+    </footer-v2>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

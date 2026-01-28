@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /about.html
+Allow: /products.html
+Allow: /contact.html
+Allow: /terms.html
+
+Sitemap: https://madturtle-ai.com/sitemap.xml

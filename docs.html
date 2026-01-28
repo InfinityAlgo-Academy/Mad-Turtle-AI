@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation | Mad Turtle AI Setup Guide</title>
+    <meta name="description"
+        content="Complete installation guide and FAQ for Mad Turtle AI trading bot. Learn how to install, configure, and optimize your AI trading system.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Premium Documentation Styles */
+        .docs-hero {
+            padding: 180px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .docs-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 242, 255, 0.15), transparent 70%);
+            filter: blur(80px);
+            z-index: 0;
+        }
+
+        .docs-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .docs-hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #fff 0%, var(--primary-glow) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+
+        .docs-hero p {
+            font-size: 1.3rem;
+            color: var(--text-dim);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .docs-search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .docs-search-box input {
+            width: 100%;
+            padding: 20px 60px 20px 25px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 50px;
+            color: var(--text-main);
+            font-size: 1rem;
+            backdrop-filter: blur(20px);
+            transition: var(--transition-smooth);
+        }
+
+        .docs-search-box input:focus {
+            outline: none;
+            border-color: var(--primary-glow);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
+        }
+
+        .docs-search-box i {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-dim);
+            font-size: 1.2rem;
+        }
+
+        /* Quick Links Grid */
+        .quick-links {
+            padding: 80px 0;
+            background: linear-gradient(180deg, transparent, rgba(13, 17, 23, 0.3));
+        }
+
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
+
+        .quick-link-card {
+            background: linear-gradient(165deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            padding: 35px;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+        }
+
+        .quick-link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(0, 242, 255, 0.1), transparent);
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .quick-link-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 242, 255, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .quick-link-card:hover::before {
+            opacity: 1;
+        }
+
+        .quick-link-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 242, 255, 0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--primary-glow);
+            margin-bottom: 20px;
+            transition: var(--transition-smooth);
+        }
+
+        .quick-link-card:hover .quick-link-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: rgba(0, 242, 255, 0.2);
+        }
+
+        .quick-link-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quick-link-card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Main Documentation Layout */
+        .docs-main {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 50px 100px;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 60px;
+            position: relative;
+        }
+
+        /* Sticky Sidebar */
+        .docs-sidebar {
+            position: sticky;
+            top: 120px;
+            height: fit-content;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            padding: 30px;
+            backdrop-filter: blur(30px);
+        }
+
+        .docs-sidebar h4 {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .docs-nav {
+            list-style: none;
+        }
+
+        .docs-nav li {
+            margin-bottom: 8px;
+        }
+
+        .docs-nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .docs-nav a::before {
+            content: '';
+            width: 3px;
+            height: 0;
+            background: var(--primary-glow);
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: var(--transition-smooth);
+            border-radius: 2px;
+        }
+
+        .docs-nav a:hover,
+        .docs-nav a.active {
+            color: var(--primary-glow);
+            background: rgba(0, 242, 255, 0.05);
+        }
+
+        .docs-nav a.active::before {
+            height: 70%;
+        }
+
+        .docs-nav i {
+            font-size: 0.8rem;
+            width: 16px;
+        }
+
+        /* Content Area */
+        .docs-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 32px;
+            padding: 60px;
+            backdrop-filter: blur(30px);
+            min-height: 600px;
+        }
+
+        .docs-section {
+            margin-bottom: 80px;
+            scroll-margin-top: 100px;
+        }
+
+        .docs-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        .section-title i {
+            font-size: 2.2rem;
+            color: var(--primary-glow);
+        }
+
+        .section-subtitle {
+            font-size: 1.8rem;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            color: var(--primary-glow);
+            font-weight: 700;
+        }
+
+        .section-subtitle-small {
+            font-size: 1.3rem;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .docs-content p {
+            color: var(--text-dim);
+            line-height: 1.9;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .docs-content ul,
+        .docs-content ol {
+            color: var(--text-dim);
+            margin-bottom: 25px;
+            padding-left: 30px;
+            line-height: 1.9;
+        }
+
+        .docs-content li {
+            margin-bottom: 12px;
+        }
+
+        .docs-content strong {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .docs-content code {
+            background: rgba(0, 242, 255, 0.1);
+            color: var(--primary-glow);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        /* Enhanced Info Boxes */
+        .info-box {
+            background: linear-gradient(135deg, rgba(0, 242, 255, 0.12), rgba(112, 0, 255, 0.08));
+            border: 1px solid rgba(0, 242, 255, 0.5);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 242, 255, 0.15);
+        }
+
+        .info-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-glow), var(--secondary-glow));
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.5);
+        }
+
+        .info-box::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(0, 242, 255, 0.15), transparent 70%);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        .info-box i {
+            font-size: 1.8rem;
+            color: var(--primary-glow);
+            margin-top: 3px;
+            flex-shrink: 0;
+            filter: drop-shadow(0 0 8px rgba(0, 242, 255, 0.4));
+            position: relative;
+            z-index: 1;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, rgba(255, 100, 0, 0.12), rgba(255, 50, 0, 0.08));
+            border: 1px solid rgba(255, 100, 0, 0.5);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(255, 100, 0, 0.15);
+        }
+
+        .warning-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #ff6400, #ff3d00);
+            box-shadow: 0 0 15px rgba(255, 100, 0, 0.5);
+        }
+
+        .warning-box::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 100, 0, 0.15), transparent 70%);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        .warning-box i {
+            color: #ff6400;
+            font-size: 1.8rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+            filter: drop-shadow(0 0 8px rgba(255, 100, 0, 0.4));
+            position: relative;
+            z-index: 1;
+        }
+
+        .success-box {
+            background: linear-gradient(135deg, rgba(0, 255, 100, 0.12), rgba(0, 200, 100, 0.08));
+            border: 1px solid rgba(0, 255, 100, 0.5);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 255, 100, 0.15);
+        }
+
+        .success-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #00ff64, #00c850);
+            box-shadow: 0 0 15px rgba(0, 255, 100, 0.5);
+        }
+
+        .success-box::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(0, 255, 100, 0.15), transparent 70%);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        .success-box i {
+            color: #00ff64;
+            font-size: 1.8rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+            filter: drop-shadow(0 0 8px rgba(0, 255, 100, 0.4));
+            position: relative;
+            z-index: 1;
+        }
+
+        .info-box-title {
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .info-box>div,
+        .warning-box>div,
+        .success-box>div {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Code Blocks */
+        .code-block {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px 0;
+            font-family: 'Courier New', monospace;
+            color: var(--primary-glow);
+            font-size: 0.95rem;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .code-block::before {
+            content: 'CODE';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
+
+        /* Step Cards */
+        .step-card {
+            background: linear-gradient(165deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
+            transition: var(--transition-smooth);
+        }
+
+        .step-card:hover {
+            border-color: rgba(0, 242, 255, 0.3);
+            background: linear-gradient(165deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
+            color: #000;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            box-shadow: 0 10px 25px rgba(0, 242, 255, 0.3);
+        }
+
+        .step-content h4 {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .step-content p,
+        .step-content ul,
+        .step-content ol {
+            color: var(--text-dim);
+            line-height: 1.8;
+        }
+
+        /* FAQ Section */
+        .faq-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .faq-item {
+            background: linear-gradient(165deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+            border: 1px solid var(--border-glass);
+            border-radius: 18px;
+            padding: 30px;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+
+        .faq-item:hover {
+            background: linear-gradient(165deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+            border-color: rgba(0, 242, 255, 0.3);
+            transform: translateX(5px);
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .faq-question i {
+            color: var(--primary-glow);
+            font-size: 0.9rem;
+        }
+
+        .faq-answer {
+            color: var(--text-dim);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        /* Table Styles */
+        .param-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .param-table th {
+            background: rgba(0, 242, 255, 0.1);
+            color: var(--primary-glow);
+            padding: 18px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .param-table td {
+            padding: 18px;
+            border-top: 1px solid var(--border-glass);
+            color: var(--text-dim);
+        }
+
+        .param-table tr:hover {
+            background: rgba(0, 242, 255, 0.05);
+        }
+
+        .param-name {
+            color: #fff;
+            font-weight: 600;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1200px) {
+            .docs-main {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .docs-sidebar {
+                position: relative;
+                top: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .docs-hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .docs-hero p {
+                font-size: 1.1rem;
+            }
+
+            .quick-links-grid {
+                grid-template-columns: 1fr;
+                padding: 0 30px;
+            }
+
+            .docs-main {
+                padding: 0 30px 60px;
+            }
+
+            .docs-content {
+                padding: 40px 30px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .section-subtitle {
+                font-size: 1.5rem;
+            }
+
+            .step-card {
+                flex-direction: column;
+            }
+
+            .step-number {
+                width: 50px;
+            }
+
+            .param-table {
+                font-size: 0.85rem;
+            }
+
+            .param-table th,
+            .param-table td {
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .docs-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .docs-content {
+                padding: 30px 20px;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 90px;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-glow), var(--secondary-glow));
+            z-index: 1001;
+            transition: width 0.1s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="canvas-bg"></div>
+    <div class="glow-orb orb-primary"></div>
+    <div class="glow-orb orb-secondary"></div>
+
+    <header id="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">MAD<span class="accent-gradient">TURTLE</span></a>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="products.html" class="nav-link">Products</a>
+                <a href="docs.html" class="nav-link">Docs</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="https://infinityalgoacademy.net/item/ai-machine-learning-trading-bot-mad-turtle/"
+                    class="btn-v2 btn-premium">Get Access</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="docs-hero">
+        <div class="docs-hero-content reveal-v2">
+            <h1>Documentation Center</h1>
+            <p>Everything you need to install, configure, and master Mad Turtle AI. From setup to optimization.</p>
+            <div class="docs-search-box">
+                <input type="text" placeholder="Search documentation..." id="searchInput">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="quick-links">
+        <div class="quick-links-grid">
+            <div class="quick-link-card reveal-v2" onclick="scrollToSection('installation')">
+                <div class="quick-link-icon"><i class="fas fa-download"></i></div>
+                <h3>Installation</h3>
+                <p>Step-by-step guide to get Mad Turtle AI running on your MT5 platform.</p>
+            </div>
+            <div class="quick-link-card reveal-v2" style="transition-delay: 0.1s;"
+                onclick="scrollToSection('configuration')">
+                <div class="quick-link-icon"><i class="fas fa-cog"></i></div>
+                <h3>Configuration</h3>
+                <p>Learn how to configure all parameters for optimal performance.</p>
+            </div>
+            <div class="quick-link-card reveal-v2" style="transition-delay: 0.2s;" onclick="scrollToSection('faq')">
+                <div class="quick-link-icon"><i class="fas fa-question-circle"></i></div>
+                <h3>FAQ</h3>
+                <p>Find answers to the most commonly asked questions.</p>
+            </div>
+            <div class="quick-link-card reveal-v2" style="transition-delay: 0.3s;"
+                onclick="scrollToSection('troubleshooting')">
+                <div class="quick-link-icon"><i class="fas fa-tools"></i></div>
+                <h3>Troubleshooting</h3>
+                <p>Solutions to common issues and error messages.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Documentation -->
+    <div class="docs-main">
+        <!-- Sidebar -->
+        <aside class="docs-sidebar reveal-v2">
+            <h4>Contents</h4>
+            <ul class="docs-nav">
+                <li><a href="#overview" class="active"><i class="fas fa-book"></i> Overview</a></li>
+                <li><a href="#requirements"><i class="fas fa-clipboard-check"></i> Requirements</a></li>
+                <li><a href="#installation"><i class="fas fa-download"></i> Installation</a></li>
+                <li><a href="#configuration"><i class="fas fa-cog"></i> Configuration</a></li>
+                <li><a href="#optimization"><i class="fas fa-chart-line"></i> Optimization</a></li>
+                <li><a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                <li><a href="#troubleshooting"><i class="fas fa-tools"></i> Troubleshooting</a></li>
+                <li><a href="#support"><i class="fas fa-life-ring"></i> Support</a></li>
+            </ul>
+        </aside>
+
+        <!-- Content -->
+        <main class="docs-content reveal-v2">
+            <!-- Overview -->
+            <section class="docs-section" id="overview">
+                <h2 class="section-title">
+                    <i class="fas fa-book"></i>
+                    Overview
+                </h2>
+                <p>Welcome to the Mad Turtle AI documentation. This comprehensive guide will walk you through every
+                    aspect of installing, configuring, and optimizing your AI-powered trading system for MetaTrader 5.
+                </p>
+
+                <div class="info-box">
+                    <i class="fas fa-info-circle"></i>
+                    <div>
+                        <span class="info-box-title">What is Mad Turtle AI?</span>
+                        Mad Turtle AI is a sophisticated machine learning trading system designed specifically for
+                        XAUUSD (Gold) trading on the H4 timeframe. It utilizes ONNX neural network models to analyze
+                        market patterns and execute high-probability trades with mathematical precision.
+                    </div>
+                </div>
+
+                <p>Key features include:</p>
+                <ul>
+                    <li><strong>Native ONNX Execution:</strong> Runs neural networks directly in MT5 without external
+                        dependencies</li>
+                    <li><strong>Ensemble Learning:</strong> Combines multiple AI models for superior accuracy</li>
+                    <li><strong>No Martingale:</strong> Safe, fixed-risk money management</li>
+                    <li><strong>Adaptive Intelligence:</strong> Learns from market conditions in real-time</li>
+                    <li><strong>Fully Automated:</strong> Set it and forget it - works 24/7</li>
+                </ul>
+            </section>
+
+            <!-- Requirements -->
+            <section class="docs-section" id="requirements">
+                <h2 class="section-title">
+                    <i class="fas fa-clipboard-check"></i>
+                    System Requirements
+                </h2>
+
+                <h3 class="section-subtitle">Minimum System Specifications</h3>
+                <table class="param-table">
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Minimum</th>
+                            <th>Recommended</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="param-name">Platform</td>
+                            <td>MetaTrader 5 (Build 3802+)</td>
+                            <td>Latest MT5 Build</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">Operating System</td>
+                            <td>Windows 10 (64-bit)</td>
+                            <td>Windows 11 / Server 2019+</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">RAM</td>
+                            <td>4GB</td>
+                            <td>8GB+</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">Storage</td>
+                            <td>500MB free</td>
+                            <td>2GB+ SSD</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">Internet</td>
+                            <td>Stable connection</td>
+                            <td>Low latency (<50ms)< /td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 class="section-subtitle">Broker Requirements</h3>
+                <ul>
+                    <li><strong>ONNX Support:</strong> Broker must support ONNX model execution in MT5</li>
+                    <li><strong>XAUUSD Availability:</strong> Gold trading pair must be available</li>
+                    <li><strong>Minimum Balance:</strong> $500 (recommended $1000+)</li>
+                    <li><strong>Leverage:</strong> 1:100 or higher recommended</li>
+                    <li><strong>Spread:</strong> Low spread broker preferred (under 20 pips average)</li>
+                    <li><strong>Execution:</strong> ECN or STP execution preferred</li>
+                </ul>
+
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div>
+                        <span class="info-box-title">Risk Warning</span>
+                        Trading involves substantial risk of loss. Never trade with money you cannot afford to lose.
+                        Always test on a demo account before going live. Past performance does not guarantee future
+                        results.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Installation -->
+            <section class="docs-section" id="installation">
+                <h2 class="section-title">
+                    <i class="fas fa-download"></i>
+                    Installation Guide
+                </h2>
+
+                <p>Follow these steps carefully to install Mad Turtle AI on your MetaTrader 5 platform:</p>
+
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Download the Bot Package</h4>
+                        <p>Visit the official download page and acquire your Mad Turtle AI package:</p>
+                        <div class="code-block">
+                            https://infinityalgoacademy.net/item/ai-machine-learning-trading-bot-mad-turtle/</div>
+                        <p>Your download will include:</p>
+                        <ul>
+                            <li><code>MadTurtleAI.ex5</code> - Main Expert Advisor executable</li>
+                            <li><code>model.onnx</code> - Pre-trained neural network model</li>
+                            <li><code>config.set</code> - Default configuration preset</li>
+                            <li><code>README.txt</code> - Quick start guide</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Locate Your MT5 Data Folder</h4>
+                        <p>Open MetaTrader 5 and navigate to the data directory:</p>
+                        <ol>
+                            <li>Launch MT5 platform</li>
+                            <li>Click <strong>File → Open Data Folder</strong></li>
+                            <li>Windows Explorer will open showing your MT5 data directory</li>
+                        </ol>
+                        <div class="code-block">C:\Users\[YourName]\AppData\Roaming\MetaQuotes\Terminal\[BrokerID]\
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Install the Files</h4>
+                        <p>Copy the downloaded files to their respective folders:</p>
+                        <ul>
+                            <li>Copy <code>MadTurtleAI.ex5</code> to: <code>MQL5\Experts\</code></li>
+                            <li>Copy <code>model.onnx</code> to: <code>MQL5\Files\</code></li>
+                            <li>Copy <code>config.set</code> to: <code>MQL5\Presets\</code></li>
+                        </ul>
+                        <div class="info-box">
+                            <i class="fas fa-lightbulb"></i>
+                            <div>
+                                <span class="info-box-title">Pro Tip</span>
+                                After copying files, restart MT5 completely to ensure all components are properly loaded
+                                and recognized by the platform.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Enable Automated Trading</h4>
+                        <p>Configure MT5 to allow Expert Advisors:</p>
+                        <ol>
+                            <li>In MT5, click <strong>Tools → Options</strong></li>
+                            <li>Navigate to the <strong>Expert Advisors</strong> tab</li>
+                            <li>Enable these settings:
+                                <ul>
+                                    <li>✅ Allow automated trading</li>
+                                    <li>✅ Allow DLL imports</li>
+                                    <li>✅ Allow WebRequest for listed URL</li>
+                                </ul>
+                            </li>
+                            <li>Click <strong>OK</strong> to save changes</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h4>Attach Bot to Chart</h4>
+                        <ol>
+                            <li>Open a <strong>XAUUSD H4</strong> chart (4-hour timeframe)</li>
+                            <li>Press <strong>Ctrl+N</strong> to open Navigator panel</li>
+                            <li>Expand <strong>Expert Advisors</strong> section</li>
+                            <li>Drag <strong>MadTurtleAI</strong> onto the XAUUSD H4 chart</li>
+                            <li>Settings window appears - click <strong>OK</strong> (we'll configure later)</li>
+                            <li>Verify: Look for a <strong>smiley face icon 😊</strong> in top-right corner</li>
+                        </ol>
+                        <div class="success-box">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <span class="info-box-title">Installation Complete!</span>
+                                If you see the smiley face icon and no error messages in the Experts tab (Ctrl+T), your
+                                bot is successfully installed and ready to trade.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Configuration -->
+            <section class="docs-section" id="configuration">
+                <h2 class="section-title">
+                    <i class="fas fa-cog"></i>
+                    Configuration Settings
+                </h2>
+
+                <p>Understanding and properly configuring these parameters is crucial for optimal performance:</p>
+
+                <h3 class="section-subtitle">Risk Management Parameters</h3>
+                <table class="param-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="param-name">LotSize</td>
+                            <td>0.01</td>
+                            <td>Fixed lot size per trade. Recommended: 0.01 per $1000 balance</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">RiskPercent</td>
+                            <td>2.0</td>
+                            <td>Risk per trade as % of balance. Range: 1-5%. Conservative: 2%, Aggressive: 3-5%</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">MaxSpread</td>
+                            <td>200</td>
+                            <td>Maximum allowed spread in points. Bot won't trade if spread exceeds this</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">StopLoss</td>
+                            <td>500</td>
+                            <td>Stop loss in pips. Recommended: 400-600 for H4 timeframe</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">TakeProfit</td>
+                            <td>1200</td>
+                            <td>Take profit in pips. Recommended: 1000-1500 for optimal R:R</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 class="section-subtitle">AI Model Settings</h3>
+                <table class="param-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="param-name">ModelPath</td>
+                            <td>model.onnx</td>
+                            <td>Path to ONNX model file. Leave as default unless using custom model</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">ConfidenceThreshold</td>
+                            <td>0.75</td>
+                            <td>Minimum AI confidence (0.0-1.0). Higher = fewer but more confident trades</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">UseEnsemble</td>
+                            <td>true</td>
+                            <td>Enable multi-model voting. Recommended: true for better accuracy</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 class="section-subtitle">Trading Hours</h3>
+                <table class="param-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="param-name">TradingStartHour</td>
+                            <td>0</td>
+                            <td>Start trading at (0-23). Default: 0 (midnight) - trades 24/7</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">TradingEndHour</td>
+                            <td>23</td>
+                            <td>Stop trading at (0-23). Default: 23 (11 PM)</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">AvoidNews</td>
+                            <td>true</td>
+                            <td>Pause during high-impact news. Recommended: true to avoid volatility spikes</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 class="section-subtitle">Example Configuration</h3>
+                <div class="code-block">// Recommended Settings for $1000 Account
+                    LotSize = 0.01
+                    RiskPercent = 2.0
+                    StopLoss = 500
+                    TakeProfit = 1200
+                    ConfidenceThreshold = 0.75
+                    UseEnsemble = true
+                    AvoidNews = true</div>
+            </section>
+
+            <!-- Optimization -->
+            <section class="docs-section" id="optimization">
+                <h2 class="section-title">
+                    <i class="fas fa-chart-line"></i>
+                    Optimization & Best Practices
+                </h2>
+
+                <h3 class="section-subtitle">Account Size Recommendations</h3>
+                <table class="param-table">
+                    <thead>
+                        <tr>
+                            <th>Account Size</th>
+                            <th>Lot Size</th>
+                            <th>Risk %</th>
+                            <th>Strategy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>$500-$1000</td>
+                            <td>0.01</td>
+                            <td>2%</td>
+                            <td>Conservative - Focus on capital preservation</td>
+                        </tr>
+                        <tr>
+                            <td>$1000-$5000</td>
+                            <td>0.01-0.05</td>
+                            <td>2-3%</td>
+                            <td>Balanced - Steady growth with moderate risk</td>
+                        </tr>
+                        <tr>
+                            <td>$5000+</td>
+                            <td>Scale proportionally</td>
+                            <td>2-4%</td>
+                            <td>Aggressive - Consider multiple instances</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 class="section-subtitle">VPS Hosting (Highly Recommended)</h3>
+                <p>For 24/7 uninterrupted operation, use a Virtual Private Server:</p>
+                <ul>
+                    <li><strong>OS:</strong> Windows Server 2016 or higher</li>
+                    <li><strong>RAM:</strong> 2GB minimum, 4GB recommended</li>
+                    <li><strong>Location:</strong> Near your broker's server for low latency</li>
+                    <li><strong>Providers:</strong> Forex VPS, Vultr, AWS, or broker-provided VPS</li>
+                    <li><strong>Cost:</strong> Typically $15-30/month</li>
+                </ul>
+
+                <div class="info-box">
+                    <i class="fas fa-server"></i>
+                    <div>
+                        <span class="info-box-title">Why Use a VPS?</span>
+                        A VPS ensures your bot runs 24/7 without interruption from power outages, internet issues, or
+                        computer restarts. It also provides faster execution with lower latency to broker servers.
+                    </div>
+                </div>
+
+                <h3 class="section-subtitle">Performance Monitoring</h3>
+                <p>Track these key metrics weekly:</p>
+                <ul>
+                    <li><strong>Win Rate:</strong> Target 60%+ winning trades</li>
+                    <li><strong>Profit Factor:</strong> Should be above 1.5</li>
+                    <li><strong>Average Win/Loss Ratio:</strong> Aim for 2:1 or better</li>
+                    <li><strong>Maximum Drawdown:</strong> Keep under 20%</li>
+                    <li><strong>Sharpe Ratio:</strong> Higher is better (above 1.0 is good)</li>
+                </ul>
+            </section>
+
+            <!-- FAQ -->
+            <section class="docs-section" id="faq">
+                <h2 class="section-title">
+                    <i class="fas fa-question-circle"></i>
+                    Frequently Asked Questions
+                </h2>
+
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-chevron-right"></i>
+                            Why isn't my bot trading?
+                        </div>
+                        <div class="faq-answer">
+                            Check these common issues:
+                            <ul>
+                                <li>Ensure "AutoTrading" button is enabled (green) in MT5 toolbar</li>
+                                <li>Verify you're on XAUUSD H4 chart specifically</li>
+                                <li>Check current spread - if too high, bot waits for better conditions</li>
+                                <li>Confirm <code>model.onnx</code> is in <code>MQL5\Files\</code> folder</li>
+                                <li>Review Experts tab (Ctrl+T) for error messages</li>
+                                <li>Ensure sufficient account balance and margin</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-chevron-right"></i>
+                            How many trades should I expect per week?
+                        </div>
+                        <div class="faq-answer">
+                            Mad Turtle AI is a quality-over-quantity system. On H4 timeframe, expect 3-8 trades per week
+                            on average. During low-volatility periods, it may wait several days for optimal setups. This
+                            is intentional - the AI only trades when confidence is high enough to justify the risk.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-chevron-right"></i>
+                            Can I use this on other pairs besides XAUUSD?
+                        </div>
+                        <div class="faq-answer">
+                            No. The neural network model is specifically trained on XAUUSD price patterns, volatility
+                            characteristics, and market behavior. Using it on other pairs will result in poor
+                            performance and losses. We're developing models for EUR/USD, GBP/USD, and other major pairs
+                            - join our community for updates.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-chevron-right"></i>
+                            What's the expected monthly return?
+                        </div>
+                        <div class="faq-answer">
+                            Backtesting and forward testing show 8-15% monthly returns with proper risk management (2%
+                            risk per trade). However, past performance does not guarantee future results. Market
+                            conditions vary, and drawdown periods are normal. Some months may be flat or negative.
+                            Always trade responsibly.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-chevron-right"></i>
+                            Do I need to update the model?
+                        </div>
+                        <div class="faq-answer">
+                            Yes. We release model updates quarterly (every 3 months) to adapt to evolving market
+                            conditions and improve accuracy. Updates are completely free for all users. You'll receive
+                            email notifications when new models are available. Simply replace the old
+                            <code>model.onnx</code> file with the new one.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-chevron-right"></i>
+                            Can I run multiple instances simultaneously?
+                        </div>
+                        <div class="faq-answer">
+                            Yes, but only on different accounts or with different magic numbers. Running multiple
+                            instances on the same account with the same symbol can cause order conflicts and unexpected
+                            behavior. If you want to diversify, use separate broker accounts or wait for our multi-pair
+                            models.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-chevron-right"></i>
+                            Is there a mobile app to monitor trades?
+                        </div>
+                        <div class="faq-answer">
+                            The bot runs on MT5, which has excellent mobile apps for iOS and Android. You can monitor
+                            all trades, check performance, and even close positions manually from your phone. However,
+                            the EA itself must run on a desktop/VPS. We recommend using MT5 mobile app for monitoring
+                            while the bot runs on your VPS.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Troubleshooting -->
+            <section class="docs-section" id="troubleshooting">
+                <h2 class="section-title">
+                    <i class="fas fa-tools"></i>
+                    Troubleshooting
+                </h2>
+
+                <h3 class="section-subtitle">Error: "ONNX model not found"</h3>
+                <p><strong>Solution:</strong></p>
+                <ol>
+                    <li>Verify <code>model.onnx</code> exists in: <code>MQL5\Files\</code></li>
+                    <li>Check file name is exactly "model.onnx" (case-sensitive)</li>
+                    <li>Re-download if file is corrupted (check file size > 0 bytes)</li>
+                    <li>Restart MT5 completely after placing file</li>
+                    <li>Check file permissions - ensure MT5 can read the file</li>
+                </ol>
+
+                <h3 class="section-subtitle">Error: "Trading is disabled"</h3>
+                <p><strong>Solution:</strong></p>
+                <ol>
+                    <li>Click the "AutoTrading" button in MT5 toolbar (should turn green)</li>
+                    <li>Go to Tools → Options → Expert Advisors</li>
+                    <li>Ensure "Allow automated trading" is checked</li>
+                    <li>Verify your broker allows EA trading (contact support if unsure)</li>
+                    <li>Check if account is in read-only mode</li>
+                </ol>
+
+                <h3 class="section-subtitle">Bot opens trades but closes immediately</h3>
+                <p><strong>Possible causes and solutions:</strong></p>
+                <ul>
+                    <li><strong>Stop loss too tight:</strong> Increase SL value to 500+ pips</li>
+                    <li><strong>Spread widening:</strong> Check MaxSpread setting, increase if needed</li>
+                    <li><strong>Broker restrictions:</strong> Some brokers have minimum trade duration - contact support
+                    </li>
+                    <li><strong>Insufficient margin:</strong> Check account balance and leverage</li>
+                    <li><strong>Conflicting EAs:</strong> Remove other EAs from the same chart</li>
+                </ul>
+
+                <h3 class="section-subtitle">High drawdown / consecutive losses</h3>
+                <p><strong>Actions to take:</strong></p>
+                <ul>
+                    <li>Reduce risk per trade to 1-2% immediately</li>
+                    <li>Increase ConfidenceThreshold to 0.80 or 0.85</li>
+                    <li>Verify you're using the latest model version</li>
+                    <li>Consider pausing during extreme market volatility (major news events)</li>
+                    <li>Review broker spread and execution quality</li>
+                    <li>Check if you're trading during recommended hours</li>
+                </ul>
+
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div>
+                        <span class="info-box-title">Drawdown is Normal</span>
+                        All trading systems experience drawdown periods. If you hit 15-20% drawdown, reduce lot size by
+                        50% or pause trading until market conditions improve. Never increase lot size to "recover"
+                        losses faster - this leads to account blowouts.
+                    </div>
+                </div>
+
+                <h3 class="section-subtitle">Still Having Issues?</h3>
+                <p>If you've tried the above solutions and still experiencing problems, please contact our support team
+                    with:</p>
+                <ul>
+                    <li>MT5 build number (Help → About)</li>
+                    <li>Broker name</li>
+                    <li>Screenshot of the error message</li>
+                    <li>Contents of the Experts tab (Ctrl+T)</li>
+                    <li>Your configuration settings</li>
+                </ul>
+            </section>
+
+            <!-- Support -->
+            <section class="docs-section" id="support">
+                <h2 class="section-title">
+                    <i class="fas fa-life-ring"></i>
+                    Support & Community
+                </h2>
+
+                <h3 class="section-subtitle">Get Help</h3>
+                <p>We offer multiple support channels to assist you:</p>
+
+                <div class="step-card">
+                    <div class="step-number"><i class="fas fa-envelope"></i></div>
+                    <div class="step-content">
+                        <h4>Email Support</h4>
+                        <p><a href="mailto:[EMAIL_ADDRESS]"
+                                style="color: var(--primary-glow); font-weight: 600;">me@infinityalgoacademy.net</a></p>
+                        <p style="color: var(--text-dim); font-size: 0.9rem;">Response time: 24-48 hours | Available:
+                            Mon-Fri, 9AM-6PM GMT</p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number"><i class="fab fa-telegram"></i></div>
+                    <div class="step-content">
+                        <h4>Telegram Community</h4>
+                        <p>Join our active trader community for real-time help, strategy discussions, and market
+                            insights.</p>
+                        <a href="https://t.me/King_arius_dz" class="btn-v2 btn-glass" style="margin-top: 15px;">Join
+                            Telegram</a>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number"><i class="fab fa-discord"></i></div>
+                    <div class="step-content">
+                        <h4>Discord Server</h4>
+                        <p>Technical discussions, direct access to developers, and exclusive alpha testing
+                            opportunities.</p>
+                        <a href="https://discord.gg/8Q572y45" class="btn-v2 btn-glass" style="margin-top: 15px;">Join
+                            Discord</a>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number"><i class="fab fa-youtube"></i></div>
+                    <div class="step-content">
+                        <h4>YouTube Channel</h4>
+                        <p>Video tutorials, setup guides, strategy explanations, and weekly market analysis.</p>
+                        <a href="https://www.youtube.com/@InfinityAlgoAcademy" class="btn-v2 btn-glass"
+                            style="margin-top: 15px;">Subscribe Now</a>
+                    </div>
+                </div>
+
+                <h3 class="section-subtitle">Additional Resources</h3>
+                <ul>
+                    <li><a href="products.html" style="color: var(--primary-glow);">View All Products</a> - Explore
+                        complementary trading tools</li>
+                    <li><a href="about.html" style="color: var(--primary-glow);">About Our Technology</a> - Deep dive
+                        into how the AI works</li>
+                    <li><a href="contact.html" style="color: var(--primary-glow);">Contact Us</a> - Business inquiries
+                        and partnerships</li>
+                </ul>
+
+                <div class="info-box" style="margin-top: 60px;">
+                    <i class="fas fa-rocket"></i>
+                    <div>
+                        <span class="info-box-title">Ready to Start Trading?</span>
+                        Download Mad Turtle AI now and join thousands of traders using machine learning to navigate the
+                        markets with precision and confidence.
+                        <br><br>
+                        <a href="https://infinityalgoacademy.net/item/ai-machine-learning-trading-bot-mad-turtle/"
+                            class="btn-v2 btn-premium" style="margin-top: 10px;">Download Now</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer-v2>
+        <div class="container-v2">
+            <div class="footer-grid-v2">
+                <div>
+                    <a href="index.html" class="logo">MAD<span class="accent-gradient">TURTLE</span></a>
+                    <p class="footer-desc">Redefining algorithmic trading through machine learning and mathematical
+                        transparency.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Navigation</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="docs.html">Docs</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Legal</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="terms.html">Disclosure</a></li>
+                        <li><a href="terms.html">Privacy</a></li>
+                        <li><a href="terms.html">Risk Terms</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Social</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="https://t.me/King_arius_dz">Telegram</a></li>
+                        <li><a href="https://www.youtube.com/@InfinityAlgoAcademy">YouTube</a></li>
+                        <li><a href="https://discord.gg/8Q572y45">Discord</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                style="text-align: center; color: var(--text-dim); font-size: 0.85rem; border-top: 1px solid var(--border-glass); padding-top: 30px;">
+                &copy; 2026 Mad Turtle AI Intelligence Group. Highly speculative trading involves risk.
+            </div>
+        </div>
+    </footer-v2>
+
+    <script src="script.js"></script>
+    <script>
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scrollProgress').style.width = scrolled + '%';
+        });
+
+        // Smooth scroll for sidebar and quick links
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        document.querySelectorAll('.docs-nav a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                scrollToSection(targetId);
+
+                // Update active state
+                document.querySelectorAll('.docs-nav a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Update active nav on scroll
+        const sections = document.querySelectorAll('.docs-section');
+        const navLinks = document.querySelectorAll('.docs-nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', function (e) {
+            const searchTerm = e.target.value.toLowerCase();
+            if (searchTerm.length > 2) {
+                // Simple search - highlight matching sections
+                sections.forEach(section => {
+                    const text = section.textContent.toLowerCase();
+                    if (text.includes(searchTerm)) {
+                        section.style.background = 'rgba(0, 242, 255, 0.05)';
+                    } else {
+                        section.style.background = '';
+                    }
+                });
+            } else {
+                sections.forEach(section => {
+                    section.style.background = '';
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>
