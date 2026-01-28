@@ -1,0 +1,22 @@
+{
+    "name": "Mad Turtle AI - Premium Trading Platform",
+    "short_name": "Mad Turtle AI",
+    "description": "Advanced Machine Learning Trading System for XAUUSD Markets",
+    "icons": [
+        {
+            "src": "/assets/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#020408",
+    "background_color": "#020408",
+    "display": "standalone",
+    "start_url": "/",
+    "scope": "/"
+}
