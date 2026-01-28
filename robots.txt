@@ -3,7 +3,12 @@ Allow: /
 Allow: /index.html
 Allow: /about.html
 Allow: /products.html
+Allow: /docs.html
 Allow: /contact.html
 Allow: /terms.html
 
-Sitemap: https://madturtle-ai.com/sitemap.xml
+# Sitemap location
+Sitemap: https://infinityalgo-academy.github.io/Mad-Turtle-AI/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 10
