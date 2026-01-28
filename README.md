@@ -1,7 +1,7 @@
 # 🐢 Mad Turtle AI - Ultra-Premium AI Trading Platform
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Website](https://img.shields.io/badge/Website-Live-success)](https://infinityalgoacademy.github.io/Mad-Turtle-AI/)
+[![Website](https://img.shields.io/badge/Website-Live-success)](https://infinityalgoacademy.github.io/Mad-Turtle-AI/index.html)
 [![GitHub](https://img.shields.io/badge/GitHub-InfinityAlgo--Academy-black)](https://github.com/InfinityAlgo-Academy/Mad-Turtle-AI)
 
 > **Advanced Machine Learning Trading System for XAUUSD (Gold) Markets**
